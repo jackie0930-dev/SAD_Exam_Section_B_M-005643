@@ -1,0 +1,186 @@
+/**
+ * Initial Mock Application State (Offline Local Mode & Fallback)
+ */
+export const INITIAL_PROFILES = [
+  { id: '11111111-1111-1111-1111-111111111111', student_id: 'STAFF01', full_name: 'Scholarship Admin Staff', email: 'staff@university.edu.ph', role: 'Staff' },
+  { id: '22222222-2222-2222-2222-222222222201', student_id: 'B01', full_name: 'Juan Dela Cruz', email: 'b01@scholar.edu.ph', role: 'Scholar', programCode: 'EXCELLENCE' },
+  { id: '22222222-2222-2222-2222-222222222202', student_id: 'B02', full_name: 'Maria Clara', email: 'b02@scholar.edu.ph', role: 'Scholar', programCode: 'EXCELLENCE' },
+  { id: '22222222-2222-2222-2222-222222222203', student_id: 'B03', full_name: 'Crisostomo Ibarra', email: 'b03@scholar.edu.ph', role: 'Scholar', programCode: 'ACCESS' },
+  { id: '22222222-2222-2222-2222-222222222204', student_id: 'B04', full_name: 'Elias Salome', email: 'b04@scholar.edu.ph', role: 'Scholar', programCode: 'ACCESS' },
+  { id: '22222222-2222-2222-2222-222222222205', student_id: 'B05', full_name: 'Sisa Basilio', email: 'b05@scholar.edu.ph', role: 'Scholar', programCode: 'EXCELLENCE' },
+  { id: '22222222-2222-2222-2222-222222222206', student_id: 'B06', full_name: 'Jose Rizal', email: 'b06@scholar.edu.ph', role: 'Scholar', programCode: 'ACCESS' }
+];
+
+export const INITIAL_SUBMISSIONS = [
+  {
+    id: 'c0000000-0000-0000-0000-000000000001',
+    scholar_id: '22222222-2222-2222-2222-222222222201',
+    student_id: 'B01',
+    full_name: 'Juan Dela Cruz',
+    programCode: 'EXCELLENCE',
+    academic_year: '2026-2027',
+    semester: 'Semester 1',
+    gwa: 2.00,
+    enrolled_units: 18,
+    failed_count: 0,
+    inc_count: 0,
+    dropped_count: 0,
+    evidence_reference: 'https://drive.google.com/grades/b01.pdf',
+    submitted_at: '2026-11-06T17:00:00+08:00',
+    verification_status: 'Verified',
+    verification_notes: 'Grade document matches official registrar slip.',
+    compliance_status: 'Compliant',
+    deficiency_reasons: [],
+    renewal_decision: 'Approved',
+    decision_notes: 'All academic thresholds satisfied at boundary.'
+  },
+  {
+    id: 'c0000000-0000-0000-0000-000000000002',
+    scholar_id: '22222222-2222-2222-2222-222222222202',
+    student_id: 'B02',
+    full_name: 'Maria Clara',
+    programCode: 'EXCELLENCE',
+    academic_year: '2026-2027',
+    semester: 'Semester 1',
+    gwa: 2.01,
+    enrolled_units: 18,
+    failed_count: 0,
+    inc_count: 0,
+    dropped_count: 0,
+    evidence_reference: 'https://drive.google.com/grades/b02.pdf',
+    submitted_at: '2026-11-05T10:00:00+08:00',
+    verification_status: 'Verified',
+    verification_notes: 'Document verified.',
+    compliance_status: 'With Deficiency',
+    deficiency_reasons: ['GWA of 2.01 exceeds program maximum allowed limit of 2.00.'],
+    renewal_decision: 'Held',
+    decision_notes: 'Grant renewal on hold due to GWA deficiency.'
+  },
+  {
+    id: 'c0000000-0000-0000-0000-000000000003',
+    scholar_id: '22222222-2222-2222-2222-222222222203',
+    student_id: 'B03',
+    full_name: 'Crisostomo Ibarra',
+    programCode: 'ACCESS',
+    academic_year: '2026-2027',
+    semester: 'Semester 1',
+    gwa: 2.50,
+    enrolled_units: 15,
+    failed_count: 0,
+    inc_count: 0,
+    dropped_count: 1,
+    evidence_reference: 'https://drive.google.com/grades/b03.pdf',
+    submitted_at: '2026-11-05T10:00:00+08:00',
+    verification_status: 'Verified',
+    verification_notes: 'Document verified.',
+    compliance_status: 'Compliant',
+    deficiency_reasons: [],
+    renewal_decision: 'Approved',
+    decision_notes: 'Compliant under Access Scholar policy rules (1 dropped permitted).'
+  },
+  {
+    id: 'c0000000-0000-0000-0000-000000000004',
+    scholar_id: '22222222-2222-2222-2222-222222222204',
+    student_id: 'B04',
+    full_name: 'Elias Salome',
+    programCode: 'ACCESS',
+    academic_year: '2026-2027',
+    semester: 'Semester 1',
+    gwa: 2.50,
+    enrolled_units: 14,
+    failed_count: 0,
+    inc_count: 1,
+    dropped_count: 0,
+    evidence_reference: 'https://drive.google.com/grades/b04.pdf',
+    submitted_at: '2026-11-05T10:00:00+08:00',
+    verification_status: 'Verified',
+    verification_notes: 'Document verified.',
+    compliance_status: 'With Deficiency',
+    deficiency_reasons: [
+      'Enrolled units (14) is below required minimum of 15.',
+      'Incomplete subjects (1) exceeds allowed limit of 0.'
+    ],
+    renewal_decision: 'Held',
+    decision_notes: 'Renewal held due to insufficient load and incomplete grade.'
+  },
+  {
+    id: 'c0000000-0000-0000-0000-000000000005',
+    scholar_id: '22222222-2222-2222-2222-222222222205',
+    student_id: 'B05',
+    full_name: 'Sisa Basilio',
+    programCode: 'EXCELLENCE',
+    academic_year: '2026-2027',
+    semester: 'Semester 1',
+    gwa: 1.75,
+    enrolled_units: 18,
+    failed_count: 1,
+    inc_count: 0,
+    dropped_count: 0,
+    evidence_reference: 'https://drive.google.com/grades/b05.pdf',
+    submitted_at: '2026-11-06T17:01:00+08:00',
+    verification_status: 'Verified',
+    verification_notes: 'Document verified.',
+    compliance_status: 'With Deficiency',
+    deficiency_reasons: [
+      'Failed subjects count (1) exceeds allowed limit of 0.',
+      'Submission timestamp is after deadline (2026-11-06 17:00 PHT).'
+    ],
+    renewal_decision: 'Held',
+    decision_notes: 'Renewal held due to failed course and late submission.'
+  },
+  {
+    id: 'c0000000-0000-0000-0000-000000000006',
+    scholar_id: '22222222-2222-2222-2222-222222222206',
+    student_id: 'B06',
+    full_name: 'Jose Rizal',
+    programCode: 'ACCESS',
+    academic_year: '2026-2027',
+    semester: 'Semester 1',
+    gwa: 2.25,
+    enrolled_units: 15,
+    failed_count: 0,
+    inc_count: 0,
+    dropped_count: 0,
+    evidence_reference: 'https://drive.google.com/grades/b06.pdf',
+    submitted_at: '2026-11-05T10:00:00+08:00',
+    verification_status: 'Pending verification',
+    verification_notes: '',
+    compliance_status: 'Pending',
+    deficiency_reasons: [],
+    renewal_decision: 'Pending',
+    decision_notes: ''
+  }
+];
+
+export const INITIAL_AUDIT_LOGS = [
+  {
+    id: 'log-001',
+    submission_id: 'c0000000-0000-0000-0000-000000000001',
+    performed_by_name: 'Juan Dela Cruz (Scholar)',
+    action_type: 'SEMESTER_SUBMISSION_CREATED',
+    previous_state: 'None',
+    new_state: 'Pending verification',
+    comments: 'Initial submission for AY 2026-2027 Semester 1.',
+    timestamp: '2026-11-06T17:00:00+08:00'
+  },
+  {
+    id: 'log-002',
+    submission_id: 'c0000000-0000-0000-0000-000000000001',
+    performed_by_name: 'Scholarship Admin Staff',
+    action_type: 'EVIDENCE_VERIFIED',
+    previous_state: 'Pending verification',
+    new_state: 'Verified',
+    comments: 'Grade document verified against registrar guidelines.',
+    timestamp: '2026-11-07T09:00:00+08:00'
+  },
+  {
+    id: 'log-003',
+    submission_id: 'c0000000-0000-0000-0000-000000000001',
+    performed_by_name: 'Scholarship Admin Staff',
+    action_type: 'RENEWAL_APPROVED',
+    previous_state: 'Pending',
+    new_state: 'Approved',
+    comments: 'Grant renewal approved based on compliant academic status.',
+    timestamp: '2026-11-07T09:15:00+08:00'
+  }
+];
